@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}<title>Cart Page</title>{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/cartpage/cartpage.css' %}">{% endblock %}
+
+{% block content %}
+<div class="cart-container">
+    <h1>Your Cart</h1>
+
+    {% if cart_items %}
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <!-- Product Image and Name -->
+                <td class="product-info">
+                    {% if item.product_type == 'new_arrival' and item.new_arrival %}
+                        <img src="{{ item.new_arrival.product_image.url }}" alt="{{ item.new_arrival.product_name }}" class="product-img">
+                        <span>{{ item.new_arrival.product_name }}</span>
+                    {% elif item.product_type == 'featured_product' and item.featured_product %}
+                        <img src="{{ item.featured_product.product_image.url }}" alt="{{ item.featured_product.product_name }}" class="product-img">
+                        <span>{{ item.featured_product.product_name }}</span>
+                    {% elif item.product_type == 'earphone' and item.earphone %}
+                        <img src="{{ item.earphone.product_image.url }}" alt="{{ item.earphone.product_name }}" class="product-img">
+                        <span>{{ item.earphone.product_name }}</span>
+                    {% elif item.product_type == 'headphone' and item.headphone %}
+                        <img src="{{ item.headphone.product_image.url }}" alt="{{ item.headphone.product_name }}" class="product-img">
+                        <span>{{ item.headphone.product_name }}</span>
+                    {% elif item.product_type == 'techgadget' and item.techgadget %}
+                        <img src="{{ item.techgadget.product_image.url }}" alt="{{ item.techgadget.product_name }}" class="product-img">
+                        <span>{{ item.techgadget.product_name }}</span>
+                    {% else %}
+                        <span>Unknown Product</span>
+                    {% endif %}
+                </td>
+
+                <!-- Product Price -->
+                <td>
+                    {% if item.product_type == 'new_arrival' and item.new_arrival %}
+                        ${{ item.new_arrival.price }}
+                    {% elif item.product_type == 'featured_product' and item.featured_product %}
+                        ${{ item.featured_product.price }}
+                    {% elif item.product_type == 'earphone' and item.earphone %}
+                        ${{ item.earphone.price }}
+                    {% elif item.product_type == 'headphone' and item.headphone %}
+                        ${{ item.headphone.price }}
+                    {% elif item.product_type == 'techgadget' and item.techgadget %}
+                        ${{ item.techgadget.price }}
+                    {% else %}
+                        $0.00
+                    {% endif %}
+                </td>
+
+                <!-- Quantity -->
+                <td>{{ item.quantity }}</td>
+
+                <!-- Remove Button -->
+                <td>
+                    <button class="delete-btn" data-item-id="{{ item.id }}">🗑️</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="cart-actions">
+        <a href="{% url 'homepage' %}" class="cart-action-btn">Continue Shopping</a>
+        <div class="coupon-section">
+            <input type="text" placeholder="Coupon code" class="coupon-input">
+            <button class="apply-btn">Apply</button>
+        </div>
+    </div>
+
+    <div class="cart-summary">
+        <h2>Order Summary</h2>
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="subtotal">${{ subtotal }}</span>
+        </div>
+        <div class="summary-row">
+            <span>Shipping</span>
+            <span>Free</span>
+        </div>
+        <div class="summary-row">
+            <span>Tax (8%)</span>
+            <span id="tax">${{ tax }}</span>
+        </div>
+        <div class="summary-row total">
+            <span>Total</span>
+            <span id="total">${{ total }}</span>
+        </div>
+        <a href="{% url 'show_address' %}" class="checkout-btn">Proceed to Checkout</a>
+        <p class="secure-checkout">Secure checkout powered by Stripe</p>
+    </div>
+
+    {% else %}
+    <p>Your cart is empty.</p>
+    <a href="{% url 'homepage' %}" class="continue-shopping">Continue Shopping</a>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'javascript/add_to_cart_feature.js' %}"></script>
+{% endblock %}

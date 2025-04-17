@@ -1,0 +1,41 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/addresspage/showaddress.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+<h2 style="text-align:center;">Your Saved Addresses</h2>
+
+<div class = "new_address" style="text-align:center; margin-top: 20px;">
+    <a href="{% url 'add_address' %}" class="continue-btn">Add New Address</a>
+</div>
+
+{% for address in addresses %}
+<div class="address-box">
+    <h3>Delivery Address</h3>
+    <p><strong>Name:</strong> {{ address.full_name }}</p>
+    <p><strong>Street:</strong> {{ address.street_address }}</p>
+    <p><strong>City:</strong> {{ address.city }}</p>
+    <p><strong>State:</strong> {{ address.state }}</p>
+    <p><strong>Postal Code:</strong> {{ address.zip_code }}</p>
+    <p><strong>Country:</strong> {{ address.country }}</p>
+    
+    <div class="button-group">
+        <a href="{% url 'checkout_view' address.id %}"  class="continue-btn">Continue with this Address</a>
+        
+        <form method="POST" action="{% url 'delete_address' address.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Delete</button>
+        </form>
+        <a href="{% url 'edit_address' address.id %}" class="edit-btn">Edit</a>
+
+    </div>
+</div>
+{% empty %}
+<p style="text-align:center;">You have no saved addresses.</p>
+{% endfor %}
+{% endblock %}

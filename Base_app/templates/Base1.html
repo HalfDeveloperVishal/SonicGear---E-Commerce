@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    {% block title %}<title>Document</title>{% endblock %}
+    {% block css %}<link rel="stylesheet" href="">{% endblock %}
+</head>
+<body>
+    {% include 'homepage/navbar1.html' %}
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% include 'homepage/footer.html' %}
+
+    {% block script %}<script></script>{% endblock %}
+</body>
+</html>

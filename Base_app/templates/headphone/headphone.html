@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}<title>Headphones</title>{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/headphone/headphone.css' %}">{% endblock %}
+
+{% block content %}
+
+<div class="back-button-container">
+  <a href="{% url 'homepage' %}"  class="back-button">← Back</a>
+</div>
+
+<section class="headphone_list">
+  <div class="heading_thing">
+    <h1 class="section-title">Headphones</h1>
+  </div>
+
+  <div class="product-grid">
+    {% for product in headphones %}
+    <div class="product-card" data-product-id="{{ product.id }}">
+      {% if product.product_image %}
+      <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" class="product-image" />
+      {% else %}
+      <img src="{% static 'images/placeholder.png' %}" alt="No image" class="product-image" />
+      {% endif %}
+      
+      <div class="product-details">
+        <a href="{% url 'headphone_detail' product.id %}" class="product-name">{{ product.product_name }}</a>
+        <div class="product-rating">
+          <div class="stars">
+            {% for _ in ""|center:product.rating %}★{% endfor %}
+          </div>
+          <span class="rating-value">{{ product.rating }}/5.0</span>
+        </div>
+        <div class="product-price">${{ product.price }}</div>
+        <button class="add-btn" data-id="{{ product.id }}" data-type="headphone">Add</button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script src="{% static 'javascript/add_to_cart_feature.js' %}"></script>
+
+{% endblock %}

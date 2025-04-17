@@ -1,0 +1,144 @@
+.back-button-container {
+  margin-top: 80px;
+  padding-left: 30px;
+}
+
+.back-button {
+  display: inline-block;
+  background-color: #eee;
+  color: #333;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #ddd;
+}
+
+/* Section Styles */
+.techgadget_list{
+  padding: 30px 20px;
+  /* background-color: #f5f5f5; */
+}
+.heading_thing {
+  display: flex;
+  justify-content: space-between;
+}
+
+.view_all {
+  text-decoration: none;
+  margin-top: 30px;
+  color: black;
+  font-size: 1.3rem;
+}
+
+.section-title {
+  text-align: left;
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Product Card */
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* background-color: #f5f5f5; */
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: inherit;
+  border-bottom: 1px solid #eee;
+  background-color: #f5f5f5;
+}
+
+.product-details {
+  padding: 20px;
+}
+
+.product-type {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 10px 0;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  color: #2a2a2a;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+/* Rating Styles */
+.product-rating {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.stars {
+  color: #ffc107;
+  font-size: 1.1rem;
+  margin-right: 8px;
+}
+
+.rating-value {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Button Styles */
+.add-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #333;
+}
+
+@media (max-width: 680px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}

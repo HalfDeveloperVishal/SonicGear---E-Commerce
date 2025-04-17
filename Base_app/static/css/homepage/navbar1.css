@@ -1,0 +1,29 @@
+.navbar {
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Navbar Container */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Left Side - Logo */
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+  padding-left: 20px;
+}

@@ -1,0 +1,96 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 60px auto;
+  padding: 70px 20px 20px 20px;
+  background-color: #f5f5f5;
+}
+
+/* Left Content */
+.hero-content {
+  max-width: 50%;
+}
+
+.badge {
+  background-color: black;
+  color: white;
+  padding: 5px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.hero-buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.primary {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  margin-right: 10px;
+}
+
+.primary:hover {
+  background-color: black;
+  color: white;
+}
+
+.secondary {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.secondary:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Right Image */
+.hero-image img {
+  width: 400px;
+  border-radius: 10px;
+  height: 400px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-image img {
+    display: none;
+  }
+}

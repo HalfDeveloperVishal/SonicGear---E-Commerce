@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Arrivals</title>
+    <link rel="stylesheet" href="{% static 'css/homepage/featuredproduct.css' %}" />
+</head>
+<body>
+    <section class="featured_products">
+      <div class="heading_thing">
+        <h1 class="section-title">New Arrivals</h1>
+        {% comment %} <a href="" class='view_all'>View all →</a> {% endcomment %}
+      </div>
+        <div class="product-grid">
+            {% for product in newarrivalproduct %}
+            <div class="product-card" data-id="{{ product.id }}"">
+                {% if product.product_image %}
+                <img src="{{ product.product_image.url }}" alt="{{ product.product_name }}" class="product-image" />
+                {% else %}
+                <img src="{% static 'images/placeholder.png' %}" alt="No image" class="product-image" />
+                {% endif %}
+                <div class="product-details">
+                    <span class="product-type">{{ product.get_type_display }}</span>
+                    <a href="{% url 'new_arrival_detail' product.id %}" class="product-name">{{ product.product_name }}</a>
+                    <div class="product-rating">
+                        <div class="stars">
+                            {% with ''|center:product.rating as range %} 
+                                {% for _ in range %}★{% endfor %} 
+                            {% endwith %}
+                        </div>
+                        <span class="rating-value">{{ product.rating }}/5.0</span>
+                    </div>
+                    <div class="product-price">${{ product.price }}</div>
+                    <button class="add-btn" data-id="{{ product.id }} " data-type="new_arrival">Add</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

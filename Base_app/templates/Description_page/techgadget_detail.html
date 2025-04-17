@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/Description_page/Description_page.css' %}"
+/>
+
+<div class="back-button-container">
+  <a href="{% url 'techgadget_list_view' %}" class="back-button">← Back</a>
+</div>
+
+<div class="product-container">
+  <div class="main">
+    <div class="product-image">
+      <img
+        id="main-product-image"
+        src="{{ product.product_image.url }}"
+        alt="{{ product.product_name }}"
+      />
+    </div>
+    <div class="thumbnail-container">
+      {% for image in product.additional_images.all %}
+      <img
+        src="{{ image.image.url }}"
+        alt="Additional image"
+        class="thumbnail"
+        onclick="changeImage(this)"
+      />
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="product-details">
+    <h1>{{ product.product_name }}</h1>
+    <div class="rating">
+      {% for i in "12345" %} {% if forloop.counter <= product.rating %} ⭐ {%
+      else %} ☆ {% endif %} {% endfor %}
+      <span>{{ product.review_count }} reviews</span>
+    </div>
+
+    <p class="price">${{ product.price }}</p>
+
+    <p class="description">{{ product.description }}</p>
+
+    <p class="stock">
+      {% if product.stock_status == 'IN' %}
+      <span style="color: green">In Stock</span>
+      {% elif product.stock_status == 'OUT' %}
+      <span style="color: red">Out of Stock</span>
+      {% else %}
+      <span style="color: orange">Limited Stock</span>
+      {% endif %}
+    </p>
+
+    <div class="buttons">
+      <button
+        class="add-btn"
+        data-id="{{ product.id }}"
+        data-type="{{ product_type }}"
+      >
+        🛒 Add to Cart
+      </button>
+      <a href="{% url 'show_address' %}" class="buy-now">Buy Now</a>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'javascript/add_to_cart_feature.js' %}"></script>
+<script src="{% static 'javascript/description_page.js' %}"></script>
+{% endblock %}

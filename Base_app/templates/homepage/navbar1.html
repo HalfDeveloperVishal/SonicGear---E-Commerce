@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="{% static 'css/homepage/navbar1.css' %}" />
+  </head>
+  <body>
+    {% block extra_css %}{% endblock %}
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a class="logo" href="{% url 'homepage' %}">SonicGear</a>
+      </div>
+    </nav>
+    <script src="{% static 'javascript/navbar.js' %}"></script>
+  </body>
+</html>

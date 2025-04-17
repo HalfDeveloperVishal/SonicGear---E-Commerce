@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/homepage/navbar.css' %}" />
+  </head>
+  <body>
+    {% block extra_css %}{% endblock %}
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a class="logo" href="{% url 'homepage' %}">SonicGear</a>
+        <ul class="nav-links">
+          <li><a href="{% url 'homepage' %}">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li class="dropdown">
+            <a href="#">Categories <i class="fa fa-caret-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'headphone_list' %}">Headphones</a></li>
+              <li><a href="{% url 'earphone_list' %}">Earphones</a></li>
+              <li><a href="{% url 'techgadget_list_view' %}">Tech Gadgets</a></li>
+            </ul>
+          </li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="{% url 'cart' %}" class="icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count" class="cart-badge">{% if cart_count > 0 %}{{ cart_count }}{% else %}0{% endif %}</span>
+          </a>
+
+          {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}" class="sign-in-btn">Logout</a>
+          {% else %}
+          <a href="{% url 'login' %}" class="sign-in-btn">Sign In</a>
+          {% endif %}
+
+          <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+        </div>
+      </div>
+    </nav>
+    <script src="{% static 'javascript/navbar.js' %}"></script>
+  </body>
+</html>

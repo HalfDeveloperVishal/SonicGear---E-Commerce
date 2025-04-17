@@ -1,0 +1,10 @@
+{% extends 'Base.html' %}
+
+{% block title %}<title>Homepage</title>{% endblock %}
+
+{% block content %}
+{% include 'homepage/herosection.html' %}
+{% include 'homepage/featuredproduct.html' with products=products %}
+{% include 'homepage/shopbycategory.html' %}
+{% include 'homepage/new_arrivals.html' with products=products %}
+{% endblock %}

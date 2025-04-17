@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/homepage/shopbycategory.css' %}">
+</head>
+<body>
+    <section class="shop-category">
+        <div class="header">
+            <h2>Shop by Category</h2>
+        </div>
+        <div class="categories">
+            <div class="category">
+                {% comment %} <div class="image-placeholder"></div> {% endcomment %}
+                <img src="{% static 'images/boAt Rockerz 255 Pro+,.jpeg' %}" alt="Earphones" class="image-placeholder">
+                <h3>Earphones</h3>
+                <p>Wireless, noise-cancelling, and more</p>
+                <a href="{% url 'earphone_list' %}">Shop now →</a>
+            </div>
+            <div class="category">
+                {% comment %} <div class="image-placeholder"></div> {% endcomment %}
+                <img src="{% static 'images/newheaphone.jpeg' %}" alt="Earphones" class="image-placeholder">
+                <h3>Headphones</h3>
+                <p>Over-ear and on-ear designs</p>
+                <a href="{% url 'headphone_list' %}">Shop now →</a>
+            </div>
+            <div class="category">
+                {% comment %} <div class="image-placeholder"></div> {% endcomment %}
+                <img src="{% static 'images/techgadget1.jpeg' %}" alt="Earphones" class="image-placeholder">
+                <h3>Tech Gadgets</h3>
+                <p>Speakers, chargers, and accessories</p>
+                <a href="{% url 'techgadget_list_view'%}">Shop now →</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
