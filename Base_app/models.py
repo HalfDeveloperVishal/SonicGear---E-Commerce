@@ -425,3 +425,21 @@ class Address(models.Model):
 
     def __str__(self):
         return f"{self.full_name} - {self.city}"
+    
+class AllProduct(models.Model):
+    CATEGORY_CHOICES = [
+        ('featured', 'Featured'),
+        ('new_arrival', 'New Arrival'),
+        ('earphone', 'Earphone'),
+        ('headphone', 'Headphone'),
+        ('tech_gadget', 'TechGadget'),
+    ]
+    
+    product_name = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='products/')
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    
+    def __str__(self):
+        return self.product_name

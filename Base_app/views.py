@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import New_arrival,Featured_product,CustomUser,CartItem,Earphone , Headphone , TechGadget , Address
+from .models import New_arrival,Featured_product,CustomUser,CartItem,Earphone , Headphone , TechGadget , Address , AllProduct
 from django.contrib.auth import login, authenticate, logout 
 from django.contrib import messages
 from .forms import RegisterForm, LoginForm
@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from decimal import Decimal
 from django.views.decorators.http import require_POST
 from .forms import AddressForm
+from django.db.models import Q
 
 
 # Create your views here.
@@ -262,6 +263,7 @@ def techgadget_detail(request, pk):
         'product': product,
         'product_type': 'techgadget'
     })
+
     
 @login_required
 def add_address(request):

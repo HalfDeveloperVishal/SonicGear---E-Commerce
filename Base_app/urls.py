@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import homepage,register_view,login_view,logout_view,add_to_cart,cart_count,cart_view,remove_from_cart,earphone_list,headphone_list,techgadget_list_view,new_arrival_detail,featured_product_detail,headphone_detail,techgadget_detail,earphone_detail , add_address ,show_address , delete_address ,edit_address , checkout_view , new_navbar
+from .views import homepage,register_view,login_view,logout_view,add_to_cart,cart_count,cart_view,remove_from_cart,earphone_list,headphone_list,techgadget_list_view,new_arrival_detail,featured_product_detail,headphone_detail,techgadget_detail,earphone_detail , add_address ,show_address , delete_address ,edit_address , checkout_view , new_navbar 
 
 urlpatterns = [
     path('', homepage, name='homepage'),

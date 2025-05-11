@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.html import format_html
-from .models import New_arrival, Featured_product, CustomUser, CartItem , Earphone , Headphone ,TechGadget , Address , ProductImage
+from .models import New_arrival, Featured_product, CustomUser, CartItem , Earphone , Headphone ,TechGadget , Address , ProductImage , AllProduct
 from django.utils.html import mark_safe
 
 class ProductImageInline(admin.TabularInline):
@@ -211,6 +211,12 @@ class TechGadgetAdmin(admin.ModelAdmin):
 
 class AddressAdmin(admin.ModelAdmin):
     list_display = ('user', 'full_name', 'city', 'state', 'zip_code', 'country')
+    
+class AllProductAdmin(admin.ModelAdmin):
+    list_display = ('product_name', 'category', 'price', 'image')  # Display these fields in the list view
+    list_filter = ('category',)  # Filter products by category in the admin panel
+    search_fields = ('product_name', 'description')  # Allow searching by product name or description
+    list_per_page = 20  # Show 20 products per page
 
 # Register Models
 admin.site.register(CustomUser, CustomUserAdmin)
@@ -221,3 +227,4 @@ admin.site.register(Earphone, EarphoneAdmin)
 admin.site.register(Headphone, HeadphoneAdmin)
 admin.site.register(TechGadget, TechGadgetAdmin)
 admin.site.register(Address,AddressAdmin)
+admin.site.register(AllProduct, AllProductAdmin)
